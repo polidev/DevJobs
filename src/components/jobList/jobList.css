@@ -1,0 +1,40 @@
+.job-section {
+  margin-bottom: 2rem;
+  padding: 0 10vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.job-section__article {
+  width: 100%;
+  padding: 1.2rem;
+  display: flex;
+  gap: 1.2rem;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--soft-white50);
+
+  &:first-of-type {
+    border-radius: 0.4rem 0.4rem 0 0;
+  }
+  &:last-of-type {
+    border-radius: 0 0 0.4rem 0.4rem;
+  }
+}
+
+.job-section__article-button {
+  aspect-ratio: 3 / 1;
+}
+
+.job-section__article-button--applied {
+  pointer-events: none;
+  background-color: #658c58;
+  color: white;
+}
+
+.job-section__no-found-text {
+  padding: 4rem;
+  border: 1px solid var(--soft-white50);
+  border-radius: 1.2rem;
+}

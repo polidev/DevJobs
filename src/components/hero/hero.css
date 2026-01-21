@@ -1,0 +1,23 @@
+.hero {
+  padding: 0 10vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background-image: linear-gradient(to top, #023047, 60%, transparent),
+    url("https://i.pinimg.com/736x/8c/86/01/8c860120b14f973228f78aa3e22f62fe.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  aspect-ratio: 16 / 9;
+
+  & h1 {
+    margin: 0;
+    font-size: 44px;
+  }
+
+  & p {
+    margin-bottom: 2rem;
+  }
+}

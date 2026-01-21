@@ -1,0 +1,37 @@
+.pagination {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+
+  & a {
+    width: 24px;
+    aspect-ratio: 1 / 1;
+    padding: 0.8rem;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+
+    transition: ease-in-out 0.2s;
+
+    &:hover {
+      transform: scale(1.08);
+      background-color: var(--light-blue);
+    }
+    &:active {
+      transform: scale(0.92);
+    }
+  }
+}
+
+.is-active {
+  background-color: var(--light-blue);
+  pointer-events: none;
+}
+
+.inactive {
+  opacity: 0.5; /* ligeramente transparente */
+  pointer-events: none; /* opcional: evita que se pueda hacer clic */
+  cursor: default; /* opcional: cambia el cursor */
+}

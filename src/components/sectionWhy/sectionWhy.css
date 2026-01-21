@@ -1,0 +1,17 @@
+.section-why {
+  display: flex;
+  flex-direction: column;
+
+  & header {
+    margin-bottom: 2rem;
+    padding: 0 10vw;
+    text-align: center;
+  }
+
+  & footer {
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    column-gap: 2rem;
+  }
+}

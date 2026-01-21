@@ -1,0 +1,51 @@
+:root {
+  --deep-orange: #fb8500;
+  --deep-yellow: #ffb703;
+  --deep-blue: #023047;
+  --light-blue: #219ebc;
+  --light-blue50: #219ebc50;
+  --lighter-blue: #8ecae6;
+  --lighter-blue50: #8ecae650;
+  --soft-white: #fffcf2;
+  --soft-white50: #fffcf250;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  background-color: var(--deep-blue);
+  color: var(--soft-white);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & a {
+    text-decoration: none;
+    color: var(--soft-white);
+  }
+
+  & button {
+    height: 4.8vh;
+    aspect-ratio: 5 / 1;
+    border: none;
+    border-radius: 0.4rem;
+
+    transition: ease-in-out 0.2s;
+
+    background-color: var(--soft-white);
+
+    &:hover {
+      transform: scale(1.08);
+    }
+    &&:active {
+      transform: scale(0.92);
+    }
+  }
+}
+
+.loading {
+  text-align: center;
+  margin: 4rem 0;
+}

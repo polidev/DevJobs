@@ -1,0 +1,35 @@
+.job-select__container {
+  margin: 1.2rem 0;
+  display: flex;
+  gap: 0.8rem;
+
+  & select {
+    &,
+    &::picker(select) {
+      appearance: base-select;
+    }
+
+    height: 4.4vh;
+    aspect-ratio: 4 / 1;
+    border: none;
+    border-radius: 0.4rem;
+
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--light-blue50);
+  }
+
+  & select:open {
+    border-radius: 0.4rem 0.4rem 0 0;
+  }
+  & select::picker-icon {
+    margin: 0 0.4rem;
+  }
+  & select:open::picker-icon {
+    rotate: 180deg;
+  }
+  & option::checkmark {
+    display: none;
+  }
+}
