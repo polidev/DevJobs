@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useFetchJobId } from "../hooks/useFetchJobId.jsx";
+import snarkdown from "snarkdown";
 
 import Header from "../components/header/header.jsx";
 import Footer from "../components/footer/footer.jsx";
@@ -10,6 +11,8 @@ function JobDetail() {
 
   if (loading) return <p>Cargando...</p>;
   if (jobData.error) return <p>No se encontró información del trabajo.</p>;
+
+  // const html = snarkdown(jobData);
 
   return (
     <>
@@ -25,12 +28,25 @@ function JobDetail() {
 
         <section>
           <h4>Descripción del puesto</h4>
-          <p>{jobData.descripcion}</p>
+          <p>{jobData.content.description}</p>
+
+          <h4>Responsabilidades</h4>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: snarkdown(jobData.content.responsibilities),
+            }}
+          />
+
+          <h4>Requisitos</h4>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: snarkdown(jobData.content.requirements),
+            }}
+          />
+
+          <h4>Acerca de la empresa</h4>
+          <p>{jobData.content.about}</p>
         </section>
-        <section></section>
-        <section></section>
-        <section></section>
-        <section></section>
       </main>
       <Footer />
     </>
