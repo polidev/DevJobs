@@ -24,6 +24,11 @@
   }
 }
 
+hr {
+  width: 100%;
+  grid-column: 4 / -4;
+}
+
 .job-detail__content {
   grid-column: 4 / -4;
 

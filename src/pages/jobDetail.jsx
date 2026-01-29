@@ -29,7 +29,7 @@ function JobDetail() {
           </aside>
           <button className="job-detail__apply-button">Aplicar ahora</button>
         </section>
-
+        <hr />
         <section className="job-detail__content">
           <h4 className="job-detail__subtitle">Descripción del puesto</h4>
           <p className="job-detail__description">
