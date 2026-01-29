@@ -8,10 +8,15 @@ import Footer from "../components/footer/footer.jsx";
 
 function JobDetail() {
   const { jobId } = useParams();
-  const { jobData, loading } = useFetchJobId({ jobId });
+  const { jobData, loading, error } = useFetchJobId({ jobId });
 
-  if (loading) return <p>Cargando...</p>;
-  if (!jobData) return <p>No se encontró información del trabajo.</p>;
+  if (loading) return <p className="job-detail__loading">Cargando...</p>;
+  if (!jobData || error)
+    return (
+      <p className="job-detail__no-found">
+        No se encontró información del trabajo.
+      </p>
+    );
 
   return (
     <>
@@ -24,7 +29,7 @@ function JobDetail() {
           </aside>
           <button className="job-detail__apply-button">Aplicar ahora</button>
         </section>
-
+        <hr />
         <section className="job-detail__content">
           <h4 className="job-detail__subtitle">Descripción del puesto</h4>
           <p className="job-detail__description">

@@ -38,3 +38,24 @@
   border: 1px solid var(--soft-white50);
   border-radius: 1.2rem;
 }
+
+.job-section__apply {
+  display: flex;
+  gap: 0.8rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & a {
+    color: var(--soft-white50);
+    transition: 0.2s;
+
+    &:hover {
+      color: var(--light-blue);
+      transform: scale(1.04);
+    }
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+}
