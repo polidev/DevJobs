@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export function useFetchJobId({ jobId }) {
-  const [jobData, setJobData] = useState({});
+  const [jobData, setJobData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -22,8 +22,8 @@ export function useFetchJobId({ jobId }) {
       }
     }
 
-    console.log("este es el JobData", jobData);
     fetchJobId();
+    console.log("este es el JobData", jobData);
   }, [jobId]);
 
   return { jobData, loading };

@@ -1,0 +1,51 @@
+.job-detail {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  /* grid-template-rows: auto auto; */
+  text-align: justify;
+}
+
+.job-detail__header {
+  grid-column: 4 / -4;
+  display: flex;
+  gap: 4rem;
+  justify-content: space-between;
+  align-items: center;
+
+  & aside {
+    & h2 {
+      /* font-size: 24px; */
+      margin-bottom: 0px;
+    }
+    & h3 {
+      font-size: small;
+      color: var(--soft-white50);
+    }
+  }
+}
+
+.job-detail__content {
+  grid-column: 4 / -4;
+
+  & h4 {
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+  & p {
+    margin-bottom: 2.8rem;
+  }
+  & ul {
+    padding: 0 0 0 1rem;
+    list-style-type: "◉";
+
+    & li {
+      margin: 0 0 0.8rem;
+      padding-left: 1.2rem;
+
+      &::marker {
+        font-size: 1.2rem;
+        color: #0099ff;
+      }
+    }
+  }
+}
