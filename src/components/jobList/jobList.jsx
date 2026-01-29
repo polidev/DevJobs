@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useId } from "react";
 import("./jobList.css");
 
@@ -33,7 +34,12 @@ function JobList({ data }) {
               <span>{item.empresa}</span> | <span>{item.data.modalidad}</span>
               <p>{item.descripcion}</p>
             </header>
-            <button className="job-section__article-button">Aplicar</button>
+            <span className="job-section__apply">
+              <Link to={`/jobs/${item.id}`} target="_blank">
+                Ver detalles
+              </Link>
+              <button className="job-section__article-button">Aplicar</button>
+            </span>
           </article>
         ))}
       </section>
