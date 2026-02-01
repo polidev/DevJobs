@@ -1,5 +1,6 @@
-import { useFetchData } from "../hooks/useFetchData.jsx";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useFetchData } from "../hooks/useFetchData.jsx";
 import { useUrlSync } from "../hooks/useUrlSync.jsx";
 
 import Header from "../components/header/header.jsx";
@@ -9,15 +10,17 @@ import JobList from "../components/jobList/jobList.jsx";
 import PaginationBar from "../components/paginationBar/paginationBar.jsx";
 
 function Jobs() {
+  const [searchParams, setSearchParams] = useSearchParams();
   // Set searchForm props
   // const [textToFilter, setTextToFilter] = useState("");
-  const [textToFilter, setTextToFilter] = useState(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    return searchParams.get("text") || "";
-  });
+  // const searchParams = new URLSearchParams(window.location.search);
+  // La arrow function se llama una sola vez al montarse el componente o ser llamada implícitamente y NO cada ves que se renderiza el componente
+  const [textToFilter, setTextToFilter] = useState(
+    () => searchParams.get("text") || "",
+  );
   // Set jobSelect props
   const [filtersValue, setFiltersValue] = useState(() => {
-    const searchParams = new URLSearchParams(window.location.search);
+    // const searchParams = new URLSearchParams(window.location.search);
     return {
       technology: searchParams.get("technology") || "",
       location: searchParams.get("type") || "",
@@ -35,7 +38,13 @@ function Jobs() {
 
   // console.log(filtersValue);
   // Sync URL
-  useUrlSync({ textToFilter, filtersValue, currentPage });
+  useUrlSync({
+    textToFilter,
+    filtersValue,
+    currentPage,
+    searchParams,
+    setSearchParams,
+  });
 
   // Call API and extract data
   const { jobs, loading, totalResults, resultsPerPage } = useFetchData({
