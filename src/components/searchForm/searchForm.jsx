@@ -1,4 +1,5 @@
 import { useId, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import JobSelect from "../jobSelect/jobSelect";
 import "./searchForm.css";
 
@@ -14,6 +15,8 @@ function SearchForm({
 }) {
   const inputSearchID = useId();
   const inputRef = useRef("");
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,6 +26,11 @@ function SearchForm({
     // console.log(inputValue);
 
     // setTextToFilter(inputValue);
+
+    if (location.pathname !== "/jobs") {
+      navigate(`/jobs?text=${inputRef.current.value}`);
+      return;
+    }
 
     setTextToFilter(inputRef.current.value);
     setCurrentPage(1);
@@ -34,7 +42,9 @@ function SearchForm({
     // let isEmpty = event.target.value;
     let isEmpty = inputRef.current.value;
 
-    isEmpty.trim() === "" ? (setTextToFilter(""), setCurrentPage(1)) : null; // This is a bad practice but is my trophy of today 😁👑
+    isEmpty.trim() === "" && location.pathname == "/jobs"
+      ? (setTextToFilter(""), setCurrentPage(1))
+      : null; // This is a bad practice but is my trophy of today 😁👑
   };
 
   return (
@@ -48,6 +58,7 @@ function SearchForm({
             id={inputSearchID}
             onChange={handleChange}
             defaultValue={initialText}
+            required
           />
         </div>
 
