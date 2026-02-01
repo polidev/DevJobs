@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ProfilePic from "../profilePic/profilePic";
 import "./header.css";
 
@@ -17,9 +18,14 @@ function Header() {
         </h2>
 
         <nav>
-          <Link to="/jobs">Empleos</Link>
-          <Link>Empresas</Link>
-          <Link>Salarios</Link>
+          <NavLink
+            to="/jobs"
+            className={({ isActive }) =>
+              isActive ? "header__nav-link--active" : ""
+            }
+          >
+            Empleos
+          </NavLink>
         </nav>
 
         <aside>
