@@ -1,27 +1,37 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
-export function useUrlSync({ textToFilter, filtersValue, currentPage }) {
-  const navigate = useNavigate();
+export function useUrlSync({
+  textToFilter,
+  filtersValue,
+  currentPage,
+  setSearchParams,
+}) {
+  // const navigate = useNavigate();
 
   useEffect(() => {
-    const searchParams = new URLSearchParams();
+    // const searchParams = new URLSearchParams();
+    setSearchParams((params) => {
+      if (textToFilter) params.set("text", textToFilter);
 
-    if (textToFilter) searchParams.append("text", textToFilter);
-    if (filtersValue.technology)
-      searchParams.append("technology", filtersValue.technology);
-    if (filtersValue.location)
-      searchParams.append("type", filtersValue.location);
-    if (filtersValue.experience)
-      searchParams.append("level", filtersValue.experience);
-    if (currentPage > 1) searchParams.append("page", currentPage);
+      if (filtersValue.technology)
+        params.set("technology", filtersValue.technology);
+
+      if (filtersValue.location) params.set("type", filtersValue.location);
+
+      if (filtersValue.experience) params.set("level", filtersValue.experience);
+
+      if (currentPage > 1) params.set("page", currentPage);
+
+      return params;
+    });
 
     // const newUrl = searchParams.toString()
     //   ? `${window.location.pathname}?${searchParams.toString()}`
     //   : window.location.pathname;
 
-    const newUrl = searchParams.toString() ? `?${searchParams.toString()}` : "";
+    // const newUrl = searchParams.toString() ? `?${searchParams.toString()}` : "";
 
-    navigate(newUrl, { replace: true });
-  }, [textToFilter, filtersValue, currentPage, navigate]);
+    // navigate(newUrl, { replace: true });
+  }, [textToFilter, filtersValue, currentPage, setSearchParams]);
 }

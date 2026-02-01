@@ -34,7 +34,7 @@ export function useFetchData({ textToFilter, filtersValue, currentPage }) {
         console.log(queryParams);
 
         const response = await fetch(
-          `https://jscamp-api.vercel.app/api/jobs?${queryParams}`
+          `https://jscamp-api.vercel.app/api/jobs?${queryParams}`,
         );
         // const response = await fetch("../data/api.json");
         const data = await response.json();
