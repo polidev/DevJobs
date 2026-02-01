@@ -14,14 +14,21 @@ export function useUrlSync({
     setSearchParams((params) => {
       if (textToFilter) params.set("text", textToFilter);
 
-      if (filtersValue.technology)
-        params.set("technology", filtersValue.technology);
+      filtersValue.technology
+        ? params.set("technology", filtersValue.technology)
+        : params.delete("technology");
 
-      if (filtersValue.location) params.set("type", filtersValue.location);
+      filtersValue.location
+        ? params.set("type", filtersValue.location)
+        : params.delete("type");
 
-      if (filtersValue.experience) params.set("level", filtersValue.experience);
+      filtersValue.experience
+        ? params.set("level", filtersValue.experience)
+        : params.delete("level");
 
-      if (currentPage > 1) params.set("page", currentPage);
+      currentPage >= 1
+        ? params.set("page", currentPage)
+        : params.delete("page");
 
       return params;
     });

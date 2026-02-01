@@ -10,7 +10,13 @@
 
   & nav {
     display: flex;
-    gap: 0.8rem;
+    gap: 0.4rem;
+
+    & a {
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.8rem 0.8rem 0 0;
+      background-color: var(--light-blue50);
+    }
   }
 
   & aside {
@@ -18,4 +24,11 @@
     gap: 0.8rem;
     align-items: center;
   }
+}
+
+.header__nav-link--active {
+  opacity: 0.5;
+
+  pointer-events: none;
+  user-select: none;
 }
