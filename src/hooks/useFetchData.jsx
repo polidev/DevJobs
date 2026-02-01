@@ -31,7 +31,7 @@ export function useFetchData({ textToFilter, filtersValue, currentPage }) {
 
         const queryParams = searchParams.toString();
 
-        console.log(queryParams);
+        // console.log(queryParams);
 
         const response = await fetch(
           `https://jscamp-api.vercel.app/api/jobs?${queryParams}`,
