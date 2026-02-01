@@ -42,7 +42,6 @@ function Jobs() {
     textToFilter,
     filtersValue,
     currentPage,
-    searchParams,
     setSearchParams,
   });
 
