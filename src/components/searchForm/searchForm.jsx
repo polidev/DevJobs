@@ -47,6 +47,20 @@ function SearchForm({
       : null; // This is a bad practice but is my trophy of today 😁👑
   };
 
+  const handleClick = (event) => {
+    event.preventDefault();
+
+    setTextToFilter("");
+
+    setFiltersValue({
+      technology: "",
+      location: "",
+      experience: "",
+    });
+
+    return filtersValue;
+  };
+
   return (
     <>
       <form className="main-search-bar" onSubmit={handleSubmit}>
@@ -57,9 +71,15 @@ function SearchForm({
             name="search"
             id={inputSearchID}
             onChange={handleChange}
-            defaultValue={initialText}
+            value={initialText}
             required
           />
+          <button
+            className="main-search-bar__clean-button"
+            onClick={handleClick}
+          >
+            ✕
+          </button>
         </div>
 
         {window.location.pathname === "/jobs" ? (
