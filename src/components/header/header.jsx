@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import ProfilePic from "../profilePic/profilePic";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import "./header.css";
 
 function Header() {
   // let service = "github";
   // let userName = "poli-code";
+  const { isLoggedIn, logIn, logOut } = useContext(AuthContext);
 
   return (
     <>
@@ -30,7 +33,11 @@ function Header() {
 
         <aside>
           <button>Publicar un empleo</button>
-          <button>Iniciar sesión</button>
+          {isLoggedIn ? (
+            <button onClick={logOut}>Cerrar sesión</button>
+          ) : (
+            <button onClick={logIn}>Iniciar sesión</button>
+          )}
           {/* <ProfilePic srvice={service} userName={userName} /> */}
         </aside>
       </header>

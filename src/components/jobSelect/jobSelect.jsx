@@ -26,7 +26,7 @@ function JobSelect({
     <>
       <div className="job-select__container">
         <select
-          defaultValue={initialTechnology}
+          value={initialTechnology}
           name="technology"
           id={techFilterID}
           onChange={handleChange}
@@ -45,7 +45,7 @@ function JobSelect({
         </select>
 
         <select
-          defaultValue={initialLocation}
+          value={initialLocation}
           name="location"
           id={locationFilterID}
           onChange={handleChange}
@@ -59,7 +59,7 @@ function JobSelect({
         </select>
 
         <select
-          defaultValue={initialExperience}
+          value={initialExperience}
           name="experience"
           id={experienceFilterID}
           onChange={handleChange}
