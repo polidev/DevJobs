@@ -16,18 +16,18 @@ export function useFetchData({ textToFilter, filtersValue, currentPage }) {
         // filters & params
         const searchParams = new URLSearchParams();
         // Text to filter
-        if (textToFilter) searchParams.append("text", textToFilter);
+        if (textToFilter) searchParams.set("text", textToFilter);
         // Filters value
         if (filtersValue.technology)
-          searchParams.append("technology", filtersValue.technology);
+          searchParams.set("technology", filtersValue.technology);
         if (filtersValue.location)
-          searchParams.append("type", filtersValue.location);
+          searchParams.set("type", filtersValue.location);
         if (filtersValue.experience)
-          searchParams.append("level", filtersValue.experience);
+          searchParams.set("level", filtersValue.experience);
 
         const offset = (currentPage - 1) * resultsPerPage;
-        searchParams.append("limit", resultsPerPage);
-        searchParams.append("offset", offset);
+        searchParams.set("limit", resultsPerPage);
+        searchParams.set("offset", offset);
 
         const queryParams = searchParams.toString();
 

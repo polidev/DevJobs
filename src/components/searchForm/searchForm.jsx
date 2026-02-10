@@ -14,51 +14,34 @@ function SearchForm({
   initialExperience,
 }) {
   const inputSearchID = useId();
-  const inputRef = useRef("");
+  const inputRef = useRef();
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // const inputValue = document.getElementById(inputSearchID).value;
-
-    // console.log(inputValue);
-
-    // setTextToFilter(inputValue);
-
     if (location.pathname !== "/jobs") {
-      navigate(`/jobs?text=${inputRef.current.value}`);
+      navigate(`/jobs?text=${event.target.search.value}`);
       return;
     }
 
-    setTextToFilter(inputRef.current.value);
+    setTextToFilter(event.target.search.value);
     setCurrentPage(1);
   };
 
-  const handleChange = () => {
-    // event.preventDefault();
-    // console.log(event.target.value);
-    // let isEmpty = event.target.value;
-    let isEmpty = inputRef.current.value;
-
-    isEmpty.trim() === "" && location.pathname == "/jobs"
-      ? (setTextToFilter(""), setCurrentPage(1))
-      : null; // This is a bad practice but is my trophy of today 😁👑
+  const handleChange = (event) => {
+    let isEmpty = event.target.value;
+    isEmpty.trim() === "" ? setTextToFilter("") : null;
   };
 
   const handleClick = (event) => {
     event.preventDefault();
+    if (inputRef.current.value === "") return;
 
+    inputRef.current.value = "";
     setTextToFilter("");
-
-    setFiltersValue({
-      technology: "",
-      location: "",
-      experience: "",
-    });
-
-    return filtersValue;
+    setFiltersValue({ technology: "", location: "", experience: "" });
   };
 
   return (
@@ -67,14 +50,16 @@ function SearchForm({
         <div className="main-search-bar__container">
           <img src="../src/assets/search.svg" alt="" />
           <input
-            ref={inputRef}
+            ref={inputRef} // Consultar el uso correcto de REF en React
+            type="text"
             name="search"
             id={inputSearchID}
             onChange={handleChange}
-            value={initialText}
+            defaultValue={initialText}
             required
           />
           <button
+            type="button"
             className="main-search-bar__clean-button"
             onClick={handleClick}
           >

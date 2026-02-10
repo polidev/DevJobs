@@ -12,7 +12,7 @@ export function useUrlSync({
   useEffect(() => {
     // const searchParams = new URLSearchParams();
     setSearchParams((params) => {
-      if (textToFilter) params.set("text", textToFilter);
+      textToFilter ? params.set("text", textToFilter) : params.delete("text");
 
       filtersValue.technology
         ? params.set("technology", filtersValue.technology)

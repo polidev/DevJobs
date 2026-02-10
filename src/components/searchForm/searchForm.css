@@ -6,7 +6,7 @@
 
   .main-search-bar__container {
     width: 60vw;
-    height: 4.8vh;
+    height: 4vh;
     padding: 0.4rem 0.4rem 0.4rem;
     display: flex;
     gap: 0.4rem;
@@ -36,4 +36,8 @@
   opacity: 0.9;
 
   transition: transform 400ms;
+
+  &:hover {
+    opacity: 1;
+  }
 }
