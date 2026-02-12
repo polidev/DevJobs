@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import ProfilePic from "../profilePic/profilePic";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import "./header.css";
 
 function Header() {
   // let service = "github";
   // let userName = "poli-code";
-  const { isLoggedIn, logIn, logOut } = useContext(AuthContext);
+  const { isLoggedIn, logIn, logOut } = useAuth();
 
   return (
     <>

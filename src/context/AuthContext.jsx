@@ -1,3 +1,5 @@
+import { useContext } from "react";
+// Puedes usar "use" en lugar de "useContext"
 import { createContext, useState } from "react";
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -21,6 +23,17 @@ function AuthProvider({ children }) {
   };
 
   return <AuthContext value={value}>{children}</AuthContext>;
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export function useAuth() {
+  const context = useContext(AuthContext);
+
+  if (context === undefined) {
+    throw new Error("useAuth must be used within a AuthProvider");
+  }
+
+  return context;
 }
 
 export default AuthProvider;
