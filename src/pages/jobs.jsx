@@ -3,8 +3,6 @@ import { useSearchParams } from "react-router-dom";
 import { useFetchData } from "../hooks/useFetchData.jsx";
 import { useUrlSync } from "../hooks/useUrlSync.jsx";
 
-import Header from "../components/header/header.jsx";
-import Footer from "../components/footer/footer.jsx";
 import SearchForm from "../components/searchForm/searchForm.jsx";
 import JobList from "../components/jobList/jobList.jsx";
 import PaginationBar from "../components/paginationBar/paginationBar.jsx";
@@ -57,7 +55,6 @@ function Jobs() {
 
   return (
     <>
-      <Header />
       <main>
         <SearchForm
           setTextToFilter={setTextToFilter}
@@ -80,7 +77,6 @@ function Jobs() {
           totalPages={totalPages}
         />
       </main>
-      <Footer />
     </>
   );
 }

@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import ProfilePic from "../profilePic/profilePic";
-import { useAuth } from "../../context/AuthContext";
+// import { useAuth } from "../../context/AuthContext";
+import { useAuthStore } from "../../store/authStore";
 import "./header.css";
 
 function Header() {
   // let service = "github";
   // let userName = "poli-code";
-  const { isLoggedIn, logIn, logOut } = useAuth();
+  // const { isLoggedIn, logIn, logOut } = useAuth();
+  const { isLoggedIn, logIn, logOut } = useAuthStore();
 
   return (
     <>
