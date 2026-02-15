@@ -37,7 +37,12 @@ function SearchForm({
 
   const handleClick = (event) => {
     event.preventDefault();
-    if (inputRef.current.value === "") return;
+    // Fix wen input is empty, filters are not reset
+    if (
+      inputRef.current.value === "" &&
+      filtersValue == { technology: "", location: "", experience: "" }
+    )
+      return;
 
     inputRef.current.value = "";
     setTextToFilter("");
