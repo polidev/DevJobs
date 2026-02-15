@@ -3,9 +3,6 @@ import { useFetchJobId } from "../hooks/useFetchJobId.jsx";
 import snarkdown from "snarkdown";
 import "../components/jobDetail/jobDetail.css";
 
-import Header from "../components/header/header.jsx";
-import Footer from "../components/footer/footer.jsx";
-
 function JobDetail() {
   const { jobId } = useParams();
   const { jobData, loading, error } = useFetchJobId({ jobId });
@@ -20,7 +17,6 @@ function JobDetail() {
 
   return (
     <>
-      <Header />
       <main className="job-detail">
         <section className="job-detail__header">
           <aside className="job-detail__company-info">
@@ -56,7 +52,6 @@ function JobDetail() {
           <p>{jobData.content.about}</p>
         </section>
       </main>
-      <Footer />
     </>
   );
 }
