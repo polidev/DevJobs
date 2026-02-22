@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import ProfilePic from "../profilePic/profilePic";
 // import { useAuth } from "../../context/AuthContext";
-import { useAuthStore } from "../../store/authStore";
+import { useAuthStore } from "../../store/authStore.jsx";
+import { useFavoritesStore } from "../../store/favoritesStore.jsx";
 import "./header.css";
 
 function Header() {
@@ -10,6 +11,11 @@ function Header() {
   // let userName = "poli-code";
   // const { isLoggedIn, logIn, logOut } = useAuth();
   const { isLoggedIn, logIn, logOut } = useAuthStore();
+  const { countFavorites } = useFavoritesStore();
+
+  const totalOfFavorites = countFavorites();
+
+  console.log(totalOfFavorites);
 
   return (
     <>
@@ -30,6 +36,7 @@ function Header() {
           >
             Empleos
           </NavLink>
+          <p>Favorites: {totalOfFavorites} 🤍</p>
         </nav>
 
         <aside>

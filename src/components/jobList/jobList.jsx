@@ -1,6 +1,20 @@
 import { Link } from "react-router-dom";
 import { useId } from "react";
+import { useFavoritesStore } from "../../store/favoritesStore";
 import("./jobList.css");
+
+function AddFavoriteButton({ item }) {
+  const { toggleFavorite, isFavorite } = useFavoritesStore();
+
+  return (
+    <button
+      className="job-section__article-favorite"
+      onClick={() => toggleFavorite(item.id)}
+    >
+      {isFavorite(item.id) ? "❤️" : "🤍"}
+    </button>
+  );
+}
 
 function JobList({ data }) {
   const generateUID = useId();
@@ -39,6 +53,7 @@ function JobList({ data }) {
                 Ver detalles
               </Link>
               <button className="job-section__article-button">Aplicar</button>
+              <AddFavoriteButton item={item} />
             </span>
           </article>
         ))}
