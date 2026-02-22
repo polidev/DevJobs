@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useId } from "react";
+import { useAuthStore } from "../../store/authStore";
 import { useFavoritesStore } from "../../store/favoritesStore";
 import("./jobList.css");
 
@@ -18,6 +19,7 @@ function AddFavoriteButton({ item }) {
 
 function JobList({ data }) {
   const generateUID = useId();
+  const { isLoggedIn } = useAuthStore();
 
   const handleBubblingClick = (event) => {
     const clickedElement = event.target;
@@ -49,10 +51,13 @@ function JobList({ data }) {
               <p>{item.descripcion}</p>
             </header>
             <span className="job-section__apply">
-              <Link to={`/jobs/${item.id}`} target="_blank">
-                Ver detalles
-              </Link>
-              <button className="job-section__article-button">Aplicar</button>
+              <Link to={`/jobs/${item.id}`}>Ver detalles</Link>
+              <button
+                disabled={!isLoggedIn}
+                className="job-section__article-button"
+              >
+                Aplicar
+              </button>
               <AddFavoriteButton item={item} />
             </span>
           </article>
