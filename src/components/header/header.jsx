@@ -12,6 +12,12 @@ function Header() {
   // const { isLoggedIn, logIn, logOut } = useAuth();
   const { isLoggedIn, logIn, logOut } = useAuthStore();
   const { countFavorites } = useFavoritesStore();
+  // Investigar por que es necesario declarar clearFavorites para que funcione (de otra manera clearFavorites() "is not a function")
+  const { clearFavorites } = useFavoritesStore();
+  const handleLogOut = () => {
+    logOut();
+    clearFavorites();
+  };
 
   const totalOfFavorites = countFavorites();
 
@@ -43,7 +49,7 @@ function Header() {
         <aside>
           <button>Publicar un empleo</button>
           {isLoggedIn ? (
-            <button onClick={logOut}>Cerrar sesión</button>
+            <button onClick={handleLogOut}>Cerrar sesión</button>
           ) : (
             <button onClick={logIn}>Iniciar sesión</button>
           )}

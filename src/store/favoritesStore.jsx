@@ -4,6 +4,9 @@ import { create } from "zustand";
 export const useFavoritesStore = create((set, get) => ({
   // Estado
   favorites: [],
+  clearFavorites: () => {
+    set({ favorites: [] });
+  },
 
   // Acciones
   addFavorite: (jobId) => {

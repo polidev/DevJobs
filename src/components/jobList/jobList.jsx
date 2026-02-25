@@ -4,13 +4,15 @@ import { useAuthStore } from "../../store/authStore";
 import { useFavoritesStore } from "../../store/favoritesStore";
 import("./jobList.css");
 
-function AddFavoriteButton({ item }) {
+function AddFavoriteButton({ item, session }) {
   const { toggleFavorite, isFavorite } = useFavoritesStore();
 
   return (
     <button
       className="job-section__article-favorite"
       onClick={() => toggleFavorite(item.id)}
+      // Es recomendable recargar la página al cerrar sesión
+      disabled={!session}
     >
       {isFavorite(item.id) ? "❤️" : "🤍"}
     </button>
@@ -20,6 +22,7 @@ function AddFavoriteButton({ item }) {
 function JobList({ data }) {
   const generateUID = useId();
   const { isLoggedIn } = useAuthStore();
+  console.log(isLoggedIn);
 
   const handleBubblingClick = (event) => {
     const clickedElement = event.target;
@@ -58,7 +61,7 @@ function JobList({ data }) {
               >
                 Aplicar
               </button>
-              <AddFavoriteButton item={item} />
+              <AddFavoriteButton item={item} session={isLoggedIn} />
             </span>
           </article>
         ))}
