@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import ProfilePic from "../profilePic/profilePic";
 // import { useAuth } from "../../context/AuthContext";
-import { useAuthStore } from "../../store/authStore";
+import { useAuthStore } from "../../store/authStore.jsx";
+import { useFavoritesStore } from "../../store/favoritesStore.jsx";
 import "./header.css";
 
 function Header() {
@@ -10,6 +11,17 @@ function Header() {
   // let userName = "poli-code";
   // const { isLoggedIn, logIn, logOut } = useAuth();
   const { isLoggedIn, logIn, logOut } = useAuthStore();
+  const { countFavorites } = useFavoritesStore();
+  // Investigar por que es necesario declarar clearFavorites para que funcione (de otra manera clearFavorites() "is not a function")
+  const { clearFavorites } = useFavoritesStore();
+  const handleLogOut = () => {
+    logOut();
+    clearFavorites();
+  };
+
+  const totalOfFavorites = countFavorites();
+
+  console.log(totalOfFavorites);
 
   return (
     <>
@@ -30,12 +42,14 @@ function Header() {
           >
             Empleos
           </NavLink>
+          <NavLink to="/profile">Perfil</NavLink>
+          <p>Favorites: {totalOfFavorites} 🤍</p>
         </nav>
 
         <aside>
           <button>Publicar un empleo</button>
           {isLoggedIn ? (
-            <button onClick={logOut}>Cerrar sesión</button>
+            <button onClick={handleLogOut}>Cerrar sesión</button>
           ) : (
             <button onClick={logIn}>Iniciar sesión</button>
           )}

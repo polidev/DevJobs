@@ -16,6 +16,12 @@ const Home = lazy(() => import("./pages/home.jsx"));
 const Jobs = lazy(() => import("./pages/jobs.jsx"));
 const JobDetail = lazy(() => import("./pages/jobDetail.jsx"));
 const NotFound = lazy(() => import("./pages/404.jsx"));
+const Profile = lazy(() => import("./pages/profile.jsx"));
+const Login = lazy(() => import("./pages/login.jsx"));
+const Register = lazy(() => import("./pages/register.jsx"));
+const ProtectedRoute = lazy(
+  () => import("./components/protectedRoute/protectedRoute.jsx"),
+);
 
 function App() {
   return (
@@ -26,6 +32,16 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/:jobId" element={<JobDetail />} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute redirectTo="/login">
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

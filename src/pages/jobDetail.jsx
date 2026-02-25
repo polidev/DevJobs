@@ -2,6 +2,20 @@ import { useParams } from "react-router-dom";
 import { useFetchJobId } from "../hooks/useFetchJobId.jsx";
 import snarkdown from "snarkdown";
 import "../components/jobDetail/jobDetail.css";
+import { useFavoritesStore } from "../store/favoritesStore.jsx";
+
+function DetailFavoriteButton({ itemId }) {
+  const { toggleFavorite, isFavorite } = useFavoritesStore();
+
+  return (
+    <button
+      className="job-section__article-favorite"
+      onClick={() => toggleFavorite(itemId)}
+    >
+      {isFavorite(itemId) ? "❤️" : "🤍"}
+    </button>
+  );
+}
 
 function JobDetail() {
   const { jobId } = useParams();
@@ -24,6 +38,7 @@ function JobDetail() {
             <h3 className="job-detail__company">{jobData.empresa}</h3>
           </aside>
           <button className="job-detail__apply-button">Aplicar ahora</button>
+          <DetailFavoriteButton itemId={jobData.id} />
         </section>
         <hr />
         <section className="job-detail__content">
