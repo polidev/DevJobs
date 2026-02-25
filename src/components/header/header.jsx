@@ -36,6 +36,7 @@ function Header() {
           >
             Empleos
           </NavLink>
+          <NavLink to="/profile">Perfil</NavLink>
           <p>Favorites: {totalOfFavorites} 🤍</p>
         </nav>
 
